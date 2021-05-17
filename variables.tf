@@ -19,7 +19,7 @@ variable disable_password_auth {
 }
 variable resource_group_name {
     type = string
-    default = "my-resource-group"
+    default = "rgname"
 }
 
 variable nodes {
@@ -50,8 +50,8 @@ variable os_image_map {
     }
 
 variable network_rules {
-    type = map
-    default = {
+    type = list(map(string))
+    default = [{
       name                       = "default"
       priority                   = "110"
       direction                  = "Inbound"
@@ -59,8 +59,8 @@ variable network_rules {
       protocol                   = "*"
       source_port_ranges         = "*"
       destination_port_ranges    = "*"
-      source_address_prefix      = "<enter desired CIDR range here>"
+      source_address_prefix      = "<insert desired cidr range here>"
       destination_address_prefix = "*"
       description                = "Allow traffic from a desired network."
-    } 
+    }]
 }
